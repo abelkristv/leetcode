@@ -8,7 +8,7 @@ class Solution:
         duplicate = 0
         missing = 0
 
-        print(gridAll)
+        # print(gridAll)
 
         for index, item in enumerate(gridAll): 
             # print(item)
@@ -18,7 +18,7 @@ class Solution:
                 duplicate = item
                 continue
             hashDict[item] = 1
-        print(missing)
+        # print(missing)
         if missing == 0:
             missing = gridAll[len(gridAll) - 1] + 1
         if gridAll[0] > 1:
