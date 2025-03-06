@@ -1,28 +1,19 @@
 class Solution:
     def findMissingAndRepeatedValues(self, grid: List[List[int]]) -> List[int]:
-        gridAll = [ y for x in grid for y in x]
-        gridAll.sort()
-
-        hashDict = {}
-
+        n = len(grid)
+        expected_sum = n * n * (n * n + 1) // 2
+        actual_sum = 0
+        seen = set()
         duplicate = 0
-        missing = 0
-
-        # print(gridAll)
-
-        for index, item in enumerate(gridAll): 
-            # print(item)
-            if gridAll[index] == gridAll[index - 1] + 2:
-                missing = gridAll[index - 1] + 1
-            if item in hashDict:
-                duplicate = item
-                continue
-            hashDict[item] = 1
-        # print(missing)
-        if missing == 0:
-            missing = gridAll[len(gridAll) - 1] + 1
-        if gridAll[0] > 1:
-            missing = 1
-
-        return [duplicate, missing]
         
+        for row in grid:
+            for num in row:
+                actual_sum += num
+                if num in seen:
+                    duplicate = num
+                else:
+                    seen.add(num)
+        
+        missing = expected_sum - (actual_sum - duplicate)
+        
+        return [duplicate, missing]
