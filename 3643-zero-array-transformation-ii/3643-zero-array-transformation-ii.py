@@ -26,7 +26,7 @@ class Solution:
             right_limit = query[1]
             maxOps = query[2]
 
-            if right_limit < cumFuckDetector - 100:
+            if right_limit < cumFuckDetector - 90:
                 continue
 
             # print("diffBefore : ", diff)            
